@@ -15,8 +15,7 @@ ol li img{display:inline;height:20px}
 .news{text-align:center;padding-top:15px;}
 .content{width:720px;margin:0 auto;background-color:white}
 .round_border{margin-bottom:5px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;margin-top:0;font-size:14px;padding:6px;border:1px solid #ccc}
-.status{background-color:<%= 
-            currentBuild.result.toString() == "SUCCESS" ? 'green' : 'red' %>;font-size:28px;font-weight:bold;color:white;width:720px;height:52px;margin-bottom:18px;text-align:center;vertical-align:middle;border-collapse:collapse;background-repeat:no-repeat}
+.status{background-color:green;font-size:24px;font-weight:bold;color:white;width:720px;height:52px;margin-bottom:18px;text-align:center;vertical-align:middle;border-collapse:collapse;background-repeat:no-repeat}
 .status .info{color:white!important;text-shadow:0 -1px 0 rgba(0,0,0,0.3);font-size:32px;line-height:36px;padding:8px 0}
 .main img{width:38px;margin-right:16px;height:38px}
 .main table{font-size:14px;}
@@ -26,6 +25,9 @@ ol li img{display:inline;height:20px}
 .bottom-message .designed{font-size:13px;color:#aaa;line-height:18px;font-style: italic;text-align:right}
 img.cartoon {width: 36px; display:inline}
 </style>
+<%
+def envOverrides = it.getAction("org.jenkinsci.plugins.workflow.cps.EnvActionImpl").getOverriddenEnvironment()
+%>
 <body>
 	<div class="news">
 		<p>
@@ -35,7 +37,7 @@ img.cartoon {width: 36px; display:inline}
 	</div>
 <div class="content round_border">
 		<div class="status">
-			<p class="info">New applcation is deployed into the kubernetes</p>
+			<p class="info">UCM Deployment Notification</p>
 		</div>
 		<!-- status -->
 		<div class="main round_border">
@@ -56,21 +58,15 @@ img.cartoon {width: 36px; display:inline}
 					</tr>
 					<tr>
 						<th>Docker image:</th>
-						<td>${build.durationString}</td>
+						<td>${envOverrides.docker_img}</td>
 					</tr>
 					<tr>
 						<th>Commit id:</th>
-						<td>${it.timestampString}</td>
+						<td>${envOverrides.commit_id}</td>
 					</tr>
 					<tr>
 						<th>Commit message:</th>
-						<td><%
-def envOverrides = it.getAction("org.jenkinsci.plugins.workflow.cps.EnvActionImpl").getOverriddenEnvironment()
-    project =  envOverrides["GGGG"]
-%>
-
-   ${project}
-</td>
+						<td>${envOverrides.commit_msg}</td>
 					</tr>
 					<tr>
 						<td colspan="2">&nbsp;</td>
