@@ -29,20 +29,20 @@ img.cartoon {width: 36px; display:inline}
 <body>
 	<div class="news">
 		<p>
-			Do you like new format of build information? <a href="mailto:larry.caiyu@gmail.com">give me feedback</a>
+			Do you like new format of build information? <a href="mailto:PDLCPTEAMO@pdl.internal.ericsson.com>">give me feedback</a>
 		</p>
 		<br>
 	</div>
 <div class="content round_border">
 		<div class="status">
-			<p class="info">The build <%= build.result.toString().toLowerCase() %></p>
+			<p class="info">The build ${build.result.toString().toLowerCase()}</p>
 		</div>
 		<!-- status -->
 		<div class="main round_border">
 			<table>
 				<tbody>
 					<tr>
-						<th>Project:</th>
+						<th>Application:</th>
 						<td>${project.name}</td>
 					</tr>
 					<tr>
@@ -55,11 +55,16 @@ img.cartoon {width: 36px; display:inline}
 						<td>${it.timestampString}</td>
 					</tr>
 					<tr>
-						<th>Build duration:</th>
+						<th>Docker image:</th>
 						<td>${build.durationString}</td>
 					</tr>
 					<tr>
-						<th>Changes</th>
+						<th>Commit id:</th>
+						<td>${it.timestampString}</td>
+					</tr>
+					<tr>
+						<th>Commit message:</th>
+						<td>${it.timestampString}</td>
 					</tr>
 					<tr>
 						<td colspan="2">&nbsp;</td>
@@ -90,20 +95,12 @@ img.cartoon {width: 36px; display:inline}
 
     <table class="bottom-message" align="center">
 		<tr>
-			<td>
-            <img class="cartoon"
-				src="http://www.gravatar.com/avatar/2515856e4452ac935394c3b5556ef323?s=128&d=identicon&r=PG"/><img class="cartoon"
-				src="http://www.gravatar.com/avatar/8f1c16c8fb46d3f829fae4022fab8433?s=128&d=identicon&r=PG"/>
-            </td>        
         	<td class="message">You are receiving this email because you
 				are relavent with this build<br>
-				<p>
-					<a href="#">support team</a> | <a href="#">Gerrit server</a>
-				</p>
 			</td>
 		</tr>
         <tr>
-            <td colspan="2" class="designed">designed by @larrycaiyu & @haojii &nbsp;</td>
+            <td colspan="2" class="designed">supported by @ucm&nbsp;</td>
         </tr>
 	</table>
 	<!-- bottom message -->
