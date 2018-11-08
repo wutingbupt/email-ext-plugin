@@ -64,7 +64,13 @@ img.cartoon {width: 36px; display:inline}
 					</tr>
 					<tr>
 						<th>Commit message:</th>
-						<td>${it.timestampString}</td>
+						<td><%
+def envOverrides = it.getAction("org.jenkinsci.plugins.workflow.cps.EnvActionImpl").getOverriddenEnvironment()
+    project =  envOverrides["GGGG"]
+%>
+
+   ${project}
+</td>
 					</tr>
 					<tr>
 						<td colspan="2">&nbsp;</td>
